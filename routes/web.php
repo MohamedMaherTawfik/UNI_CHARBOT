@@ -10,7 +10,7 @@ use App\Http\Middleware\admin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [homeController::class, 'index'])->name('home');
-Route::prefix('admin')->middleware(['auth', admin::class])->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin');
 
     Route::get('/users', [userController::class, 'index'])->name('admin.users');
@@ -20,14 +20,6 @@ Route::prefix('admin')->middleware(['auth', admin::class])->group(function () {
     Route::get('/users/{user}/edit', [userController::class, 'edit'])->name('admin.users.edit');
     Route::post('/users/{user}/edit/update', [userController::class, 'update'])->name('admin.users.update');
     Route::delete('/users/{user}/delete', [userController::class, 'destroy'])->name('admin.users.delete');
-
-    Route::get('/colleges', [collegeController::class, 'index'])->name('admin.colleges');
-    Route::get('/colleges/create', [collegeController::class, 'create'])->name('admin.colleges.create');
-    Route::post('/colleges/create/store', [collegeController::class, 'store'])->name('admin.colleges.store');
-    Route::get('/colleges/{college}', [collegeController::class, 'show'])->name('admin.colleges.show');
-    Route::get('/colleges/{college}/edit', [collegeController::class, 'edit'])->name('admin.colleges.edit');
-    Route::post('/colleges/{college}/edit/update', [collegeController::class, 'update'])->name('admin.colleges.update');
-    Route::delete('/colleges/{college}/delete', [collegeController::class, 'destroy'])->name('admin.colleges.delete');
 
     Route::get('/subjects', [subjectController::class, 'index'])->name('admin.subjects');
     Route::get('/subjects/create', [subjectController::class, 'create'])->name('admin.subjects.create');
@@ -46,3 +38,5 @@ Route::prefix('admin')->middleware(['auth', admin::class])->group(function () {
     Route::post('/grades/{grade}/edit/update', [gradeController::class, 'update'])->name('admin.grades.update');
     Route::delete('/grades/{grade}/delete', [gradeController::class, 'destroy'])->name('admin.grades.delete');
 });
+
+// admin - subAdmin - student

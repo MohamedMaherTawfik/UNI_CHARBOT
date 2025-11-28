@@ -18,6 +18,10 @@ return new class extends Migration {
             $table->foreignIdFor(subjects::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('status')->nullable();
             $table->string('grade')->nullable();
+            $table->string('semester')->nullable();
+            $table->string('year')->nullable();
+            $table->string('hours')->nullable();
+            $table->string('gpa')->nullable();
             $table->timestamps();
         });
     }
